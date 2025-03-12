@@ -20,6 +20,7 @@ import matplotlib.pyplot as plt
 
 import time
 
+#Create datasets from downloading CIFAR-10
 cifar = tf.keras.datasets.cifar10
 (train_images, train_labels), (test_images, test_labels) = cifar.load_data()
 train_images = train_images.astype('float32') / 255.0
@@ -65,6 +66,7 @@ model = models.Sequential([
     layers.Dense(units=10, activation='softmax')
 ])
 
+#Use the adam optimizer
 model.compile(optimizer = 'adam',
               loss = 'sparse_categorical_crossentropy',
               metrics = ['accuracy'])
@@ -76,6 +78,7 @@ history = model.fit(train_images, train_labels,
                     batch_size=64,
                     validation_split = 0.1)
 
+#print results
 end = time.time()
 test_loss, test_acc = model.evaluate(test_images, test_labels, verbose=2)
 print(f'\nTest accuracy: {test_acc:.4f}')

@@ -19,6 +19,7 @@ import matplotlib.pyplot as plt
 
 import time
 
+#Create datasets after downloading CIFAR-10
 cifar = tf.keras.datasets.cifar10
 (train_images, train_labels), (test_images, test_labels) = cifar.load_data()
 train_images = train_images.astype('float32') / 255.0
